@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "root mode"
+service hhvm-tophost stop
+service nginx restart
+service php-fpm start
+echo "restart of nginx and php-fm succeed"
+chkconfig php-fpm on
+chkconfig hhvm-tophost off
+service spawn-fcgi restart
+echo "restart spawn-fcgi succeed"
+yum -y install postfix
+service postfix restart
+chkconfig postfix on
+echo "installation, restart and enable services for mdbill and email succeed"
