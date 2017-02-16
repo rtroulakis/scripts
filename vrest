@@ -1,14 +1,17 @@
 #!/bin/bash
-echo "root mode"
+bold=$(tput bold)
+normal=$(tput sgr0)
+echo "${bold}root mode${normal}"
 service hhvm-tophost stop
 service nginx restart
 service php-fpm start
-echo "restart of nginx and php-fm succeed"
+echo "${bold}restart of nginx and php-fm succeed${normal}"
 chkconfig php-fpm on
 chkconfig hhvm-tophost off
 service spawn-fcgi restart
-echo "restart spawn-fcgi succeed"
+echo "${bold}restart spawn-fcgi succeed${normal}"
 yum -y install postfix
 service postfix restart
 chkconfig postfix on
-echo "installation, restart and enable services for mdbill and email succeed"
+echo "${bold}installation, restart and enable services for mdbill and email succeed${normal}"
+
